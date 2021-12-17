@@ -9,59 +9,59 @@
   "use strict";
   
   
-	var Resumo = {
+	var Portfolio = {
 		
 		root: $(':root'),
 		
 		/* collect all functions for next initialization */
 		init: function(){
 			/* Set background image from data attribute */
-			Resumo.BgImg();
+			Portfolio.BgImg();
 			
 			/* Change image into SVG */
-			Resumo.imgToSVG();
+			Portfolio.imgToSVG();
 			
 			/* Set scroll for right panel */
-			Resumo.rightPanelScroll();
+			Portfolio.rightPanelScroll();
 			
 			/* Right Panel Opener */
-			Resumo.rightNav();
+			Portfolio.rightNav();
 			
 			/* Tabs */
-			Resumo.tabs();
+			Portfolio.tabs();
 			
 			/* Progress Bar */
-			Resumo.progress();
+			Portfolio.progress();
 			
 			/* Magic Cusror */
-			Resumo.cursor();
+			Portfolio.cursor();
 			
 			/* Portfolio Carousel */
-			Resumo.portfolioCarousel();
+			Portfolio.portfolioCarousel();
 			
 			/* Testimonial Carousel */
-			Resumo.testimonialCarousel();
+			Portfolio.testimonialCarousel();
 			
 			/* Load more blog posts */
-			Resumo.loadBlogPosts();
+			Portfolio.loadBlogPosts();
 			
 			/* Movig placeholders */
-			Resumo.movingPlaceholder();
+			Portfolio.movingPlaceholder();
 			
 			/* Contact Form */
-			Resumo.contactForm();
+			Portfolio.contactForm();
 			
 			/* Scroll to Anchor */
-			Resumo.scrollToAnchor();
+			Portfolio.scrollToAnchor();
 			
 			/* Page width Animation*/
-			Resumo.pageWidthAnimation();
+			Portfolio.pageWidthAnimation();
 			
 			/* Modalbox for portfolio and blog */
-			Resumo.modal();
+			Portfolio.modal();
 			
 			/* Type Effect for right panel */
-			Resumo.typed();
+			Portfolio.typed();
 		},
 		
 		typed: function(){
@@ -87,7 +87,7 @@
 		
 		modal: function(){
 			var self		= this;
-			var modalBox	= $('.resumo_fn_modalbox');
+			var modalBox	= $('.portfolio_fn_modalbox');
 			var item		= $('.modal_item');
 			var closePopup	= modalBox.find('.closer,.extra_closer');
 			var prevNext	= modalBox.find('.fn__nav');
@@ -154,7 +154,7 @@
 					});
 				},500);
 					
-				$(".resumo_fn_modalbox .modal_content").stop().animate({scrollTop:0}, 500, 'swing');
+				$(".portfolio_fn_modalbox .modal_content").stop().animate({scrollTop:0}, 500, 'swing');
 				
 				self.modal_prevnext(prevNext,modalBox);
 				self.imgToSVG();
@@ -172,12 +172,12 @@
 						scrollTop: section.offset().top
 					}, 1000);
 					$('#nav ul li').css({transitionDelay: '0ms'});
-					$('.resumo_fn_wrapper').removeClass('nav-opened nav-hover-close');
-					$('.resumo_fn_navigation .nav_footer').removeClass('ready');
+					$('.portfolio_fn_wrapper').removeClass('nav-opened nav-hover-close');
+					$('.portfolio_fn_navigation .nav_footer').removeClass('ready');
 					return false;
 				}
 			});
-			$('.resumo_fn_totop').on('click',function(){
+			$('.portfolio_fn_totop').on('click',function(){
 				$("html, body").animate({ 
 					scrollTop: 0
 				}, 1500);
@@ -185,9 +185,9 @@
 		},
 		
 		pageWidthAnimation: function(){
-			Resumo.changeWidth();
+			Portfolio.changeWidth();
 			$(window).on('scroll', function() {
-				Resumo.changeWidth();
+				Portfolio.changeWidth();
 			});
 		},
 		
@@ -203,8 +203,8 @@
 			}
 			if(action > 0){
 				setTimeout(function(){
-					Resumo.portfolioCarousel();
-					Resumo.testimonialCarousel();
+					Portfolio.portfolioCarousel();
+					Portfolio.testimonialCarousel();
 				},500);
 			}
 		},
@@ -213,7 +213,7 @@
 		
 		contactForm: function(){
 			$('#send_message').on('click', function(){
-				var form		= $('.resumo_fn_contact .contact_form');
+				var form		= $('.portfolio_fn_contact .contact_form');
 				var name 		= $("#name").val();
 				var email 		= $("#email").val();
 				var message 	= $("#message").val();
@@ -252,7 +252,7 @@
 		},
 		
 		movingPlaceholder: function(){
-			$('.resumo_fn_contact .input_wrapper').each(function(){
+			$('.portfolio_fn_contact .input_wrapper').each(function(){
 				var e		= $(this);
 				var input 	= e.find('input, textarea');
 				if(input.val() === ''){e.removeClass('active');}
@@ -265,7 +265,7 @@
 		},
 		
 		loadBlogPosts: function(){
-			$('.resumo_fn_blog_list .load_more a').on('mousedown',function(){
+			$('.portfolio_fn_blog_list .load_more a').on('mousedown',function(){
 				var element 	= $(this);
 				var text 		= element.find('.text');
 				// stop function if don't have more items
@@ -293,7 +293,7 @@
 					return false;
 				}
 			});
-			$('.resumo_fn_blog_list .load_more a').on('click',function(){
+			$('.portfolio_fn_blog_list .load_more a').on('click',function(){
 				var element 	= $(this);
 				var text 		= element.find('.text');
 				
@@ -305,7 +305,7 @@
 				
 				
 				setTimeout(function(){
-					var listItem = element.closest('.resumo_fn_blog_list').find('.be_animated');
+					var listItem = element.closest('.portfolio_fn_blog_list').find('.be_animated');
 					listItem.each(function(i, e){
 						setTimeout(function(){
 							$(e).addClass('fadeInTop done');
@@ -321,10 +321,10 @@
 		},
 		
 		testimonialCarousel: function(){
-			var owl 		= $('.resumo_fn_testimonials .owl-carousel');
+			var owl 		= $('.portfolio_fn_testimonials .owl-carousel');
 			owl.each(function(){
 				var el 		= $(this);
-				var parent	= el.closest('.resumo_fn_testimonials');
+				var parent	= el.closest('.portfolio_fn_testimonials');
 				el.owlCarousel({
 					autoplay: true,
 					autoplayTimeout: 7000,
@@ -351,8 +351,8 @@
 					return false;
 				});
 			});
-			Resumo.imgToSVG();
-			Resumo.BgImg();
+			Portfolio.imgToSVG();
+			Portfolio.BgImg();
 		},
 		
 		portfolioCarousel: function(){
@@ -397,8 +397,8 @@
 					return false;
 				});
 			});
-			Resumo.imgToSVG();
-			Resumo.BgImg();
+			Portfolio.imgToSVG();
+			Portfolio.BgImg();
 		},
 		
 		cursor: function () {
@@ -449,9 +449,9 @@
 		},
 		
 		progress: function(){
-			$('.resumo_fn_progress_bar').each(function() {
+			$('.portfolio_fn_progress_bar').each(function() {
 				var pWrap 	= $(this);
-				pWrap.waypoint({handler: function(){Resumo.progressF(pWrap);},offset:'90%'});
+				pWrap.waypoint({handler: function(){Portfolio.progressF(pWrap);},offset:'90%'});
 			});
 		},
 		
@@ -473,14 +473,14 @@
 			tabs.find('.progress_bg').css({width:'0%'});
 			tabs.find('.progress_percent').html('').css({right:'100%'});
 			tabs.find('.progress_item').removeClass('open');
-			Resumo.progress();
+			Portfolio.progress();
 		},
 		
 		tabs: function(){
-			$('.resumo_fn_tabs .tab_header a').off().on('click',function(){
+			$('.portfolio_fn_tabs .tab_header a').off().on('click',function(){
 				var e 			= $(this);
 				var li			= e.parent();
-				var tabs		= e.closest('.resumo_fn_tabs');
+				var tabs		= e.closest('.portfolio_fn_tabs');
 				if(li.hasClass('active')){
 					return false;
 				}else{
@@ -488,7 +488,7 @@
 					tabs.find('.tab_content').children().removeClass('active');
 					li.addClass('active');
 					$(e.attr('href')).addClass('active');
-					Resumo.recallProgress(tabs);
+					Portfolio.recallProgress(tabs);
 				}
 				
 				return false;
@@ -496,11 +496,11 @@
 		},
 		
 		rightNav: function(){
-			var closer 		= $('.resumo_fn_navigation .closer,.resumo_fn_nav_overlay');
-			var overlay		= $('.resumo_fn_nav_overlay');
-			var opener 		= $('.resumo_fn_right .menu_trigger');
-			var wrapper 	= $('.resumo_fn_wrapper');
-			var navFooter	= $('.resumo_fn_navigation .nav_footer');
+			var closer 		= $('.portfolio_fn_navigation .closer,.portfolio_fn_nav_overlay');
+			var overlay		= $('.portfolio_fn_nav_overlay');
+			var opener 		= $('.portfolio_fn_right .menu_trigger');
+			var wrapper 	= $('.portfolio_fn_wrapper');
+			var navFooter	= $('.portfolio_fn_navigation .nav_footer');
 			var navLi		= $('#nav ul li');
 			var speed		= 200, transitionTime = 700;
 			var summary		= (navLi.length+1)*speed + transitionTime;
@@ -530,10 +530,10 @@
 		},
 		
 		rightPanelScroll: function(){
-			var rightPanel 	= $('.resumo_fn_right .right_in');
-			var navIn 		= $('.resumo_fn_navigation .nav_in');
+			var rightPanel 	= $('.portfolio_fn_right .right_in');
+			var navIn 		= $('.portfolio_fn_navigation .nav_in');
 			var nav 		= $('#nav');
-			var navFooter	= $('.resumo_fn_navigation .nav_footer');
+			var navFooter	= $('.portfolio_fn_navigation .nav_footer');
 			rightPanel.css({height: $(window).height()});
 			nav.css({height: navIn.height() - navFooter.outerHeight()});
 			if($().niceScroll){
@@ -595,14 +595,14 @@
 	// READY Functions
 	$(document).ready(function(){
 		
-		Resumo.init();
+		Portfolio.init();
 		
 	});
 	
 	// RESIZE Functions
 	$(window).on('resize',function(){
 		
-		Resumo.rightPanelScroll();
+		Portfolio.rightPanelScroll();
 		
 	});
 	
