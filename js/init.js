@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 Frenify
- * Author: Frenify
+ * Copyright (c) 2021 Shivam
+ * Author: Shivam
  * This file is made for CURRENT TEMPLATE
 */
 

@@ -1,7 +1,7 @@
 @charset "utf-8";
 /*
-/*	Copyright (c) 2021 Frenify
-/*	Author: Frenify
+/*	Copyright (c) 2021 Shivam
+/*	Author: Shivam
 /*	This file is made for CURRENT TEMPLATE
 /*
 
@@ -531,7 +531,7 @@ a:focus {
 	-ms-align-items: center;
 	align-items: center;
 	justify-content: center;
-	color: #888;
+	color: var(--mc);
 	width: 40px;
 	height: 40px;
 	background-color: rgba(255,255,255,.05);
@@ -634,6 +634,54 @@ a:focus {
 	letter-spacing: 0;
 	margin-bottom: 57px;
 }
+.portfolio_fn_main_title .links{
+	margin-bottom: 25px;
+}
+.portfolio_fn_main_title .links li{
+	margin: 0 10px 10px 0;
+}
+.portfolio_fn_main_title .links ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-webkit-flex-direction: row;
+	-moz-flex-direction: row;
+	-ms-flex-direction: row;
+	-o-flex-direction: row;
+	flex-direction: row;
+	-ms-align-items: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.portfolio_fn_main_title .links a{
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	-ms-align-items: center;
+	align-items: center;
+	justify-content: center;
+	color: #ddd;
+	padding: 10px;
+	background-color: rgba(255,255,255,.05);
+	transition: all 300ms ease;
+	text-decoration: none;
+	font-size: 13px;
+}
+.portfolio_fn_main_title .links .fn__svg{
+	width: 18px;
+	height: 18px;
+	display: block;
+}
+.portfolio_fn_main_title .links a:hover{
+	background-color: rgba(255,255,255,.1);
+}
 /*------------------------------------------------------------------*/
 /*	06) About Section
 /*------------------------------------------------------------------*/
@@ -654,6 +702,8 @@ a:focus {
 }
 .portfolio_fn_about_info .about_left{
 	width: 100%;
+	display: flex;
+	align-items: center;
 }
 .portfolio_fn_about_info table{
 	table-layout: fixed;
@@ -2314,8 +2364,10 @@ body.light .portfolio_fn_nav_overlay{background-color: #eee;}
 body.light #nav .label{color: #777;}
 body.light #nav ul a{color: #333;}
 body.light #nav ul a:hover{color: var(--mc);}
-body.light .portfolio_fn_navigation .social a{background-color: rgba(0,0,0,.05);color: #333;}
+body.light .portfolio_fn_navigation .social a{background-color: rgba(0,0,0,.05);color: var(--mc);}
 body.light .portfolio_fn_navigation .social a:hover{background-color: rgba(0,0,0,.1);}
+body.light .portfolio_fn_main_title .links a{background-color: rgba(0,0,0,.05);color: var(--mc);}
+body.light .portfolio_fn_main_title .links a:hover{background-color: rgba(0,0,0,.1);}
 body.light .portfolio_fn_navigation .copyright a{color: #333;}
 body.light .portfolio_fn_navigation .copyright a:before{background-color: rgba(0,0,0,.2);}
 body.light .portfolio_fn_navigation .copyright a:hover:before{background-color: rgba(0,0,0,.5);}
