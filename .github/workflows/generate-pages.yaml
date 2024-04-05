@@ -26,4 +26,6 @@ jobs:
         run: for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o $i.html ; done
       - name: list all files
         run: ls -al
+      - name: list all files in md
+        run: ls -al
       - run: echo "🍏 This job's status is ${{ job.status }}."
