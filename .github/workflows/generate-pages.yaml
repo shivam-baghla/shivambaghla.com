@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Action Details 🚀"
-      - run: |
+        run: |
           echo "
           Runner OS: ${{ runner.os }}
           Triggered Event: ${{ github.event_name }}
