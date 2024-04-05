@@ -20,8 +20,10 @@ jobs:
           version: 2.19
       # - name: Check out repository code
       #   uses: actions/checkout@v4
+      - name: list all files
+        run: ls -al
       - name: Build
-        run: for i in md/*.md ; do echo "$i" && pandoc -s $i -o $i.html ; done
+        run: for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o $i.html ; done
       - name: list all files
         run: ls -al
       - run: echo "🍏 This job's status is ${{ job.status }}."
