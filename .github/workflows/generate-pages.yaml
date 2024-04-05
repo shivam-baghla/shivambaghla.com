@@ -21,5 +21,7 @@ jobs:
       # - name: Check out repository code
       #   uses: actions/checkout@v4
       - name: Build
-        run: pandoc --version
+        run: for i in md/*.md ; do echo "$i" && pandoc -s $i -o $i.html ; done
+      - name: list all files
+        run: ls -al
       - run: echo "🍏 This job's status is ${{ job.status }}."
