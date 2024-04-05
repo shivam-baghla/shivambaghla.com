@@ -15,7 +15,7 @@ jobs:
           Repo: ${{ github.repository }}
           "
       - name: Install Pandoc
-        uses: pandoc/actions/setup@{main}
+        uses: pandoc/actions/setup
         with:
           version: 2.19
       # - name: Check out repository code
