@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Action Details 🚀"
-        run: |
+      - run: |
           echo "
           Runner OS: ${{ runner.os }}
           Triggered Event: ${{ github.event_name }}
@@ -15,7 +15,7 @@ jobs:
           Repo: ${{ github.repository }}
           "
       - name: Install Pandoc
-        uses: pandoc/actions/setup
+        uses: pandoc/actions/setup@main
         with:
           version: 2.19
       # - name: Check out repository code
