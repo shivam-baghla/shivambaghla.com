@@ -18,8 +18,8 @@ jobs:
         uses: pandoc/actions/setup@main
         with:
           version: 2.19
-      # - name: Check out repository code
-      #   uses: actions/checkout@v4
+      - name: Check out repository code
+        uses: actions/checkout@v4
       - name: list all files
         run: ls -al
       - name: Build
