@@ -27,5 +27,5 @@ jobs:
       - name: list all files
         run: ls -al
       - name: list all files in md
-        run: ls -al
+        run: ls -al md
       - run: echo "🍏 This job's status is ${{ job.status }}."
