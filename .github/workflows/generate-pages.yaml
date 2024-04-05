@@ -1,5 +1,5 @@
 name: generate html from MDs under md directory
-run-name: ${{ github.actor }} - master push
+run-name: ${{ github.actor }} pushed to master
 on: [push]
 jobs:
   generate-html:
