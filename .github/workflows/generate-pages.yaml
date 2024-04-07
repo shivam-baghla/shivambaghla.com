@@ -23,7 +23,9 @@ jobs:
       - name: list all files
         run: ls -al
       - name: Build
-        run: for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o generates/gen.html ; done
+        run: |
+          md generated
+          for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o generated/$i.html ; done
       - name: list all files
         run: ls -al
       - name: Commit generated folder
