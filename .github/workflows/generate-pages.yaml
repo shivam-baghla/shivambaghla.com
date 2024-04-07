@@ -23,9 +23,19 @@ jobs:
       - name: list all files
         run: ls -al
       - name: Build
-        run: for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o $i.html ; done
+        run: for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o generates/gen.html ; done
       - name: list all files
         run: ls -al
-      - name: cat md/shivam.md.html
-        run: cat md/shivam.md.html
+      - name: Commit generated folder
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git checkout -b deployment
+          git add generated/
+          git commit -m "Generate and deploy folder"
+      
+      - name: Push changes
+        run: |
+          git push origin deployment
       - run: echo "🍏 This job's status is ${{ job.status }}."
