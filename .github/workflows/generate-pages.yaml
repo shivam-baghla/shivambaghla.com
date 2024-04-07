@@ -23,9 +23,7 @@ jobs:
       - name: list all files
         run: ls -al
       - name: Build
-        run: |
-          mkdir generated
-          for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o generated/$i.html ; done
+        run: for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o $i.html ; done
       - name: list all files
         run: ls -al
       - name: Commit generated folder
@@ -34,7 +32,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
           git checkout -b deployment
-          git add generated/
+          git add md/
           git commit -m "Generate and deploy folder"
       
       - name: Push changes
