@@ -37,5 +37,5 @@ jobs:
       
       - name: Push changes
         run: |
-          git push origin deployment
+          git push -f origin deployment
       - run: echo "🍏 This job's status is ${{ job.status }}."
