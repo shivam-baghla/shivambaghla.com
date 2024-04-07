@@ -24,7 +24,7 @@ jobs:
         run: ls -al
       - name: Build
         run: |
-          mkdirs generated
+          mkdir generated
           for i in ./md/*.md ; do echo "$i" && pandoc -s $i -o generated/$i.html ; done
       - name: list all files
         run: ls -al
