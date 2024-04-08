@@ -22,8 +22,8 @@ jobs:
         uses: actions/checkout@v4
       - name: list all files
         run: ls -al
-      - name: Build
-        run: for i in ./docs/*.md ; do echo "$i" && pandoc -s $i -o $i.html ; done
+      - name: Build (Will convert all MDs to HTMLs)
+        run: for i in $(find . -type f -name "*.md") ;  do echo "$i" && pandoc -s $i -o $(echo $i | sed "s|.md|.html|g");rm $i;  done
       - name: list all files
         run: ls -al
       - name: Commit generated folder
