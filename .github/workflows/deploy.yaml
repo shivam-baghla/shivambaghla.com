@@ -9,6 +9,10 @@ on:
       - 'docs/**'
   workflow_dispatch:
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   generate-and-deploy:
     if: github.actor != 'github-actions[bot]'
