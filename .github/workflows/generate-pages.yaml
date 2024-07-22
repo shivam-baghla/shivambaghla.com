@@ -1,6 +1,11 @@
 name: Deploying Shivam Baghla's Digital Home
 run-name: ${{ github.actor }} pushed to master
-on: [push]
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - 'docs/**'
 jobs:
   generate-html:
     runs-on: ubuntu-latest
@@ -23,7 +28,14 @@ jobs:
       - name: list all files
         run: ls -al
       - name: Build (Will convert all MDs to HTMLs)
-        run: for i in $(find . -type f -name "*.md") ;  do echo "$i" && pandoc -s $i -o $(echo $i | sed "s|.md|.html|g")  --css=theme.css --self-contained;rm $i;  done
+        run: |
+          mkdir -p docs
+          rm -rf docs/*
+          for i in $(find . -type f -name "*.md") ; do
+            echo "$i"
+            pandoc -s $i -o docs/$(basename $i .md).html --css=theme.css --self-contained
+            rm $i
+          done
       - name: list all files
         run: ls -al
       - name: Commit generated folder
@@ -31,12 +43,9 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          git checkout -b deployment
-          git reset --hard origin/master
-          git add .
-          git commit -m "Generate and deploy folder"
-      
+          git add docs
+          git commit -m "Generate and deploy folder" --no-verify
       - name: Push changes
         run: |
-          git push -f origin deployment
+          git push origin HEAD:master
       - run: echo "🍏 This job's status is ${{ job.status }}."
