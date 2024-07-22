@@ -47,7 +47,7 @@ jobs:
             pandoc -s $i -o "$target_dir/$(basename $i .md).html" --css=theme.css --self-contained
             rm $i
           done
-          for i in $(find . -type f \( -name "*.avif" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" \)) ; do
+          for i in $(find . -type f \( -name "*.avif" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.html" \)) ; do
             echo "$i"
             target_dir="docs/$(dirname $i)"
             mkdir -p "$target_dir"
