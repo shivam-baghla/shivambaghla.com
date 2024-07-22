@@ -26,7 +26,7 @@ jobs:
         run: |
           for i in $(find . -type f -name "*.md") ; do
             echo "$i"
-            pandoc -s $i -o $(echo $i | sed "s|.md|.html|g") --css=theme.css
+            pandoc -s $i -o $(echo $i | sed "s|.md|.html|g") --css=theme.css --self-contained
             rm $i
           done
       - name: list all files
@@ -37,6 +37,7 @@ jobs:
           git config --local user.name "GitHub Action"
 
           git checkout -b deployment
+          git reset --hard origin/master
           git add .
           git commit -m "Generate and deploy folder"
       
