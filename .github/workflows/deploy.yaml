@@ -38,8 +38,8 @@ jobs:
         run: ls -al
       - name: Build (Will convert all MDs to HTMLs and move additional files)
         run: |
+          rm -rf docs
           mkdir -p docs
-          rm -rf docs/*
           for i in $(find . -type f -name "*.md") ; do
             echo "$i"
             target_dir="docs/$(dirname $i)"
