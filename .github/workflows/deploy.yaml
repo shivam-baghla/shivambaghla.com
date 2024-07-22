@@ -10,6 +10,7 @@ on:
   workflow_dispatch:
 
 permissions:
+pages: write
   id-token: write
   contents: write
 
@@ -35,14 +36,22 @@ jobs:
         uses: actions/checkout@v4
       - name: List all files
         run: ls -al
-      - name: Build (Will convert all MDs to HTMLs)
+      - name: Build (Will convert all MDs to HTMLs and move additional files)
         run: |
           mkdir -p docs
           rm -rf docs/*
           for i in $(find . -type f -name "*.md") ; do
             echo "$i"
-            pandoc -s $i -o docs/$(basename $i .md).html --css=theme.css --self-contained
+            target_dir="docs/$(dirname $i)"
+            mkdir -p "$target_dir"
+            pandoc -s $i -o "$target_dir/$(basename $i .md).html" --css=theme.css --self-contained
             rm $i
+          done
+          for i in $(find . -type f \( -name "*.avif" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" \)) ; do
+            echo "$i"
+            target_dir="docs/$(dirname $i)"
+            mkdir -p "$target_dir"
+            mv $i "$target_dir/"
           done
       - name: List all files
         run: ls -al
