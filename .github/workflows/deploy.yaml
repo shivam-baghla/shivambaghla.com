@@ -1,13 +1,17 @@
 name: Deploying Shivam Baghla's Digital Home
 run-name: ${{ github.actor }} pushed to master
+
 on:
   push:
     branches:
       - master
     paths-ignore:
       - 'docs/**'
+  workflow_dispatch:
+
 jobs:
-  generate-html:
+  generate-and-deploy:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: "Action Details 🚀"
@@ -25,7 +29,7 @@ jobs:
           version: 2.19
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: list all files
+      - name: List all files
         run: ls -al
       - name: Build (Will convert all MDs to HTMLs)
         run: |
@@ -36,7 +40,7 @@ jobs:
             pandoc -s $i -o docs/$(basename $i .md).html --css=theme.css --self-contained
             rm $i
           done
-      - name: list all files
+      - name: List all files
         run: ls -al
       - name: Commit generated folder
         run: |
@@ -48,4 +52,13 @@ jobs:
       - name: Push changes
         run: |
           git push origin HEAD:master
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
       - run: echo "🍏 This job's status is ${{ job.status }}."
