@@ -38,8 +38,10 @@ jobs:
         run: ls -al
       - name: Build (Will convert all MDs to HTMLs and move additional files)
         run: |
+          pandoc -v
           rm -rf docs
           mkdir -p docs
+          encoded_template=$(echo -n "$(cat theme/theme.html)" | base64)
           for i in $(find . -type f \( -name "*.avif" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.html" \)) ; do
             echo "$i"
             target_dir="docs/$(dirname $i)"
@@ -50,7 +52,7 @@ jobs:
             echo "$i"
             target_dir="docs/$(dirname $i)"
             mkdir -p "$target_dir"
-            pandoc -s $i -o "$target_dir/$(basename $i .md).html" --css=theme.css --self-contained
+            pandoc --sandbox -s $i -o "$target_dir/$(basename $i .md).html" --template="data:text/html;base64,$encoded_template" --embed-resources --verbose
             rm $i
           done
 

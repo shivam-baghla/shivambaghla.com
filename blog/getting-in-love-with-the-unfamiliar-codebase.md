@@ -1,3 +1,10 @@
+---
+title: "Getting in love with the unfamiliar codebase"
+date: 2022-10-09
+tags: [coding, codebase]
+reviewers: [Mukesh, Anon]
+---
+
 # Getting in love with the unfamiliar codebase
 ### Guide to help developers/ code contributors to get familiar with unfamiliar code
 
