@@ -21,3 +21,4 @@ raw ideas.
 - fear of becoming obsolate, i don't belive it but still scares me sometimes.
 - workflows, claude files, rules (may be a separate write up)
 - tooling in hand, and my preferences.(may be a separate write up)
+    - context7, brguru
