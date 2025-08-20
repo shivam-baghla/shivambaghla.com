@@ -9,7 +9,7 @@ reviewers: [name1, name2]
 ### Sub title
 
 
-![may be download from unsplash, or ai generated](/path/to/image/prefferablly locally hosted.)
+![agentic coding placeholder](./images/agents.png)
 
 raw ideas.
 - agents as a paid intern.
