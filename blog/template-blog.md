@@ -9,7 +9,7 @@ reviewers: [name1, name2]
 ### Sub title
 
 
-![may be download from unsplash etc. ,or ai generated](/path/to/image/prefferablly locally hosted.)
+![sample image](./images/shivam.avif)
 
 {intro in plain text}
 
