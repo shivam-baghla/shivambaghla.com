@@ -1,6 +1,6 @@
 ---
 title: "Title"
-date: YYYY-MM-DD
+date: DD Mmm, YYYY
 tags: [comma, separated, values]
 reviewers: [name1, name2]
 ---

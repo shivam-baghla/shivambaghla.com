@@ -1,6 +1,6 @@
 ---
 title: "Getting in love with the unfamiliar codebase"
-date: 2022-10-09
+date: 01 Sep, 2022
 tags: [coding, codebase]
 reviewers: [Mukesh, Anon]
 ---

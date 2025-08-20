@@ -1,8 +1,8 @@
 ---
 title: "Importance of Building a Strong Engineering Culture for Startups"
-date: YYYY-MM-DD
-tags: [comma, separated, values]
-reviewers: [name1, name2]
+date: 29 Dec, 2022
+tags: [Engineering Culture, values, startup]
+reviewers: [Anon]
 ---
 
 # Importance of Building a Strong Engineering Culture for Startups
