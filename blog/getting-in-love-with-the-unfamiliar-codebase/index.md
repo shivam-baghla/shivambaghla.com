@@ -9,7 +9,7 @@ reviewers: [Mukesh, Anon]
 ### Guide to help developers/ code contributors to get familiar with unfamiliar code
 
 
-![](./images/getting-in-love-with-the-unfamiliar-codebase.avif)
+![](../images/getting-in-love-with-the-unfamiliar-codebase.avif)
 
 There are many situations a developer or a code contributor comes across a new code base, be it a rise in attrition rate (post-pandemic) or a modern multi-tech stack combination requiring individuals to work on multiple code bases from time to time. This triggers a lack of confidence in taking tasks related to the new codebase (alienation 👽 effect). 
 

@@ -9,7 +9,7 @@ reviewers: [Anon]
 ### How can a strong engineering culture be key to success for a startup?
 
 
-![](./images/importance-of-building-a-strong-engineering-culture-for-startups.jpeg)
+![](../images/importance-of-building-a-strong-engineering-culture-for-startups.jpeg)
 
 
 As a startup, having a strong engineering culture can be critical for attracting and retaining top talent, promoting innovation, and helping your company succeed. Here are a few ways that building a positive engineering culture can benefit your startup:

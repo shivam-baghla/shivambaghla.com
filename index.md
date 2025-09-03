@@ -2,9 +2,9 @@
 
 Here's list of my recent writings:
 <br />
-- [Importance of Building a Strong Engineering Culture for Startups](./blog/importance-of-building-a-strong-engineering-culture-for-startups.html)
+- [Importance of Building a Strong Engineering Culture for Startups](./blog/importance-of-building-a-strong-engineering-culture-for-startups)
 <br />
-- [Getting in love with the unfamiliar codebase](./blog/getting-in-love-with-the-unfamiliar-codebase.html)
+- [Getting in love with the unfamiliar codebase](./blog/getting-in-love-with-the-unfamiliar-codebase)
 
 
 This site is Owned by **Shivam Baghla**, completely [open source](https://github.com/shivambaghla/shivambaghla.com).
