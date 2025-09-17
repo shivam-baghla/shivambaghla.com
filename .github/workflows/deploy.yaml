@@ -28,10 +28,32 @@ jobs:
           Branch: ${{ github.ref }}
           Repo: ${{ github.repository }}
           "
+      - name: Cache Pandoc Installation
+        id: cache-pandoc
+        uses: actions/cache@v4
+        with:
+          path: |
+            /opt/hostedtoolcache/pandoc
+            ~/.local/bin/pandoc
+            /usr/local/bin/pandoc
+          key: ${{ runner.os }}-pandoc-3.8
+          restore-keys: |
+            ${{ runner.os }}-pandoc-
       - name: Install Pandoc
+        if: steps.cache-pandoc.outputs.cache-hit != 'true'
         uses: pandoc/actions/setup@main
         with:
           version: 3.8
+      - name: Add Pandoc to PATH (if cached)
+        if: steps.cache-pandoc.outputs.cache-hit == 'true'
+        run: |
+          if [ -f "/opt/hostedtoolcache/pandoc/bin/pandoc" ]; then
+            echo "/opt/hostedtoolcache/pandoc/bin" >> $GITHUB_PATH
+          elif [ -f "$HOME/.local/bin/pandoc" ]; then
+            echo "$HOME/.local/bin" >> $GITHUB_PATH
+          elif [ -f "/usr/local/bin/pandoc" ]; then
+            echo "/usr/local/bin" >> $GITHUB_PATH
+          fi
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: List all files
