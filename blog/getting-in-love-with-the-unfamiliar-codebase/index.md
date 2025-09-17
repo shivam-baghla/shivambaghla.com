@@ -1,15 +1,16 @@
 ---
-title: "Getting in love with the unfamiliar codebase"
+title: Getting in love with the unfamiliar codebase
 date: 01 Sep, 2022
 tags: [coding, codebase]
-reviewers: [Mukesh, Anon]
+reviewers:
+    - "[Mukesh Kumar](https://www.linkedin.com/in/mukesh-kumar11/)"
 ---
 
 # Getting in love with the unfamiliar codebase
 ### Guide to help developers/ code contributors to get familiar with unfamiliar code
 
 
-![](../images/getting-in-love-with-the-unfamiliar-codebase.avif)
+![](./getting-in-love-with-the-unfamiliar-codebase.avif)
 
 There are many situations a developer or a code contributor comes across a new code base, be it a rise in attrition rate (post-pandemic) or a modern multi-tech stack combination requiring individuals to work on multiple code bases from time to time. This triggers a lack of confidence in taking tasks related to the new codebase (alienation 👽 effect). 
 

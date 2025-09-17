@@ -21,11 +21,11 @@ html {
 body {
   margin: 0 auto;
   max-width: 36em;
-  padding: 50px;
   hyphens: auto;
   overflow-wrap: break-word;
   text-rendering: optimizeLegibility;
   font-kerning: normal;
+  padding: 50px;
 }
 
 h1 {
@@ -68,20 +68,11 @@ p {
 
 a,
 a:visited {
-  color: var(--shivam-primary-color-light);
+  color: var(--shivam-primary-color);
 }
 
 img {
   max-width: 100%;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-top: 1.4em;
 }
 
 h5,
@@ -171,7 +162,6 @@ td {
 }
 
 header {
-  margin-bottom: 4em;
   text-align: center;
 }
 
@@ -228,4 +218,45 @@ ul.task-list li input[type="checkbox"] {
 footer {
   width: 100%;
   text-align: center;
+  padding-top: 1em;
+}
+
+.tag {
+  display: inline-block;
+  background-color: var(--shivam-primary-color-light);
+  color: var(--shivam-primary-color);
+  padding: 0.2em 0.6em;
+  margin: 0.1em;
+  border-radius: 0.3em;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+
+.reviewers,
+.reviewers a,
+.reviewers a:visited {
+  color: var(--shivam-primary-color-light);
+  text-decoration: none;
+  font-size: 0.85em;
+  font-weight: 500;
+}
+.reviewers a:hover {
+  text-decoration: underline;
+}
+
+.scroll-progress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--shivam-secondary-color);
+  z-index: 1000;
+}
+
+.progress-bar {
+  height: 100%;
+  background: var(--shivam-primary-color-light);
+  width: 0%;
+  transition: width 0.1s ease;
 }
