@@ -27,11 +27,11 @@ background-attachment: fixed;
 body {
 margin: 0 auto;
 max-width: 36em;
-padding: 50px;
 hyphens: auto;
 overflow-wrap: break-word;
 text-rendering: optimizeLegibility;
 font-kerning: normal;
+padding: 50px;
 }
 h1 {
 text-align: center;
@@ -69,18 +69,10 @@ margin: 1em 0;
 }
 a,
 a:visited {
-color: var(--shivam-primary-color-light);
+color: var(--shivam-primary-color);
 }
 img {
 max-width: 100%;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-margin-top: 1.4em;
 }
 h5,
 h6 {
@@ -154,7 +146,6 @@ td {
 padding: 0.125em 0.5em;
 }
 header {
-margin-bottom: 4em;
 text-align: center;
 }
 #TOC li {
@@ -199,18 +190,56 @@ margin: 0.5rem auto;
 footer {
 width: 100%;
 text-align: center;
+padding-top: 1em;
+}
+.tag {
+display: inline-block;
+background-color: var(--shivam-primary-color-light);
+color: var(--shivam-primary-color);
+padding: 0.2em 0.6em;
+margin: 0.1em;
+border-radius: 0.3em;
+font-size: 0.85em;
+font-weight: 500;
+}
+.reviewers,
+.reviewers a,
+.reviewers a:visited {
+color: var(--shivam-primary-color-light);
+text-decoration: none;
+font-size: 0.85em;
+font-weight: 500;
+}
+.reviewers a:hover {
+text-decoration: underline;
+}
+.scroll-progress {
+position: fixed;
+bottom: 0;
+left: 0;
+width: 100%;
+height: 8px;
+background: var(--shivam-secondary-color);
+z-index: 1000;
+}
+.progress-bar {
+height: 100%;
+background: var(--shivam-primary-color-light);
+width: 0%;
+transition: width 0.1s ease;
 }
 </style>
 </head>
 
 <body>
+    <header>01 Sep, 2022</header>
     <article>
         <h1 id="getting-in-love-with-the-unfamiliar-codebase">Getting in
         love with the unfamiliar codebase</h1>
         <h3 id="guide-to-help-developers-code-contributors-to-get-familiar-with-unfamiliar-code">Guide
         to help developers/ code contributors to get familiar with
         unfamiliar code</h3>
-        <p><img src="../images/getting-in-love-with-the-unfamiliar-codebase.avif" /></p>
+        <p><img src="./getting-in-love-with-the-unfamiliar-codebase.avif" /></p>
         <p>There are many situations a developer or a code contributor
         comes across a new code base, be it a rise in attrition rate
         (post-pandemic) or a modern multi-tech stack combination
@@ -325,16 +354,43 @@ text-align: center;
         <p>Happy coding! 🧑‍💻</p>
     </article>
 
-    <footer>
-        <p><em>Published on 01 Sep, 2022</em></p>
-        <p>Tags: coding, codebase</p>
-        <p>Reviewed by: Mukesh, Anon, </p>
-    </footer>
+    <section>
+                        <a href="https://x.com/hashtag/coding?src=shivambaghla.com" class="tag" target="_blank" rel="noopener
+                        noreferrer" data-tag="coding">coding</a>
+                <a href="https://x.com/hashtag/codebase?src=shivambaghla.com" class="tag" target="_blank" rel="noopener
+                        noreferrer" data-tag="codebase">codebase</a>
+                                <p class="reviewers">Thanks to <cite><a href="https://www.linkedin.com/in/mukesh-kumar11/">Mukesh
+Kumar</a></cite> for reading draft of this.</p>
+            </section>
 
     <footer>
-        Made with ❤️ by Shivam Baghla
+        ~ Shivam Baghla
     </footer>
 
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress">
+        <div class="progress-bar"></div>
+    </div>
+
+    <script>
+        const progressBar = document.querySelector('.progress-bar');
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            progressBar.style.width = Math.min(scrolled, 100) + '%';
+        });
+    </script>
+    <!-- scroll progress bar end -->
+
+    <script>
+        // Process tags to remove spaces, I'm human I might add spaces in tags by mistake.
+        // This is to handle that.
+        document.querySelectorAll('a.tag').forEach(tag => {
+            const originalTag = tag.dataset.tag;
+            const cleanTag = originalTag.replace(/\s+/g, '');
+            tag.textContent = '#' + cleanTag;
+            tag.href = 'https://x.com/hashtag/' + cleanTag + '?src=shivambaghla.com';
+        });
+    </script>
 </body>
 
 </html>
