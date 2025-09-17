@@ -19,19 +19,19 @@ echo "🧹 Cleaning docs directory..."
 rm -rf docs
 mkdir -p docs
 
-# Check if theme file exists
-if [[ ! -f "theme/theme.html" ]]; then
-    echo "❌ Error: theme/theme.html not found"
+# Check if theme files exist
+if [[ ! -f "theme/blog-theme.html" ]]; then
+    echo "❌ Error: theme/blog-theme.html not found"
     exit 1
 fi
 
-# Create template with absolute path for CSS
-echo "🎨 Creating template with absolute CSS path..."
+if [[ ! -f "theme/landing-theme.html" ]]; then
+    echo "❌ Error: theme/landing-theme.html not found"
+    exit 1
+fi
+
+echo "🎨 Creating templates with absolute CSS path..."
 current_dir=$(pwd)
-temp_template=$(mktemp)
-sed "s|./theme/theme.css|$current_dir/theme/theme.css|g" theme/theme.html > "$temp_template"
-encoded_template=$(echo -n "$(cat "$temp_template")" | base64)
-rm "$temp_template"
 
 # Copy static files (images, HTML, etc.)
 echo "📁 Copying static files..."
@@ -49,6 +49,21 @@ for i in $(find . -type f -name "*.md" ! -path "./docs/*" ! -path "./.git/*"); d
     target_dir="docs/$(dirname $i)"
     mkdir -p "$target_dir"
     output_file="$target_dir/$(basename "$i" .md).html"
+    
+    # Determine which theme to use based on file path
+    if [[ $i == ./blog/* ]]; then
+        theme_file="theme/blog-theme.html"
+        echo "  Using blog theme for: $i"
+    else
+        theme_file="theme/landing-theme.html"
+        echo "  Using landing theme for: $i"
+    fi
+    
+    # Create template with absolute CSS path for current theme
+    temp_template=$(mktemp)
+    sed "s|./theme/theme.css|$current_dir/theme/theme.css|g" "$theme_file" > "$temp_template"
+    encoded_template=$(echo -n "$(cat "$temp_template")" | base64)
+    rm "$temp_template"
     
     pandoc -s "$i" -o "$output_file" --template="data:text/html;base64,$encoded_template" --embed-resources --verbose
 done

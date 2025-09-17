@@ -1,9 +1,14 @@
+:root {
+  --primary-color: #330099;
+  --primary-color-light: #33009946;
+  --secondary-color: #ffffff;
+}
 html {
   line-height: 1.5;
   font-family: system-ui, sans-serif;
   font-size: 20px;
-  color: #330099;
-  background: linear-gradient(180deg, #33009946 0%, #FFFFFF 19%);
+  color: var(--primary-color);
+  background: linear-gradient(180deg, var(--primary-color-light) 0%, var(--secondary-color) 19%);
   background-repeat: repeat-x;
   background-position: top;
   background-attachment: fixed;
@@ -59,7 +64,7 @@ p {
 
 a,
 a:visited {
-  color: #1a1a1a;
+  color: var(--primary-color-light);
 }
 
 img {
@@ -100,7 +105,7 @@ blockquote {
   margin: 1em 0 1em 1.7em;
   padding-left: 1em;
   border-left: 2px solid #e6e6e6;
-  color: #606060;
+  color: var(--primary-color-light);
 }
 
 code {
