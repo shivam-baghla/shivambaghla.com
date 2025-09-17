@@ -8,7 +8,11 @@ html {
   font-family: system-ui, sans-serif;
   font-size: 20px;
   color: var(--primary-color);
-  background: linear-gradient(180deg, var(--primary-color-light) 0%, var(--secondary-color) 19%);
+  background: linear-gradient(
+    180deg,
+    var(--primary-color-light) 0%,
+    var(--secondary-color) 19%
+  );
   background-repeat: repeat-x;
   background-position: top;
   background-attachment: fixed;
@@ -219,4 +223,9 @@ ul.task-list li input[type="checkbox"] {
   display: block;
   text-align: center;
   margin: 0.5rem auto;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
 }
