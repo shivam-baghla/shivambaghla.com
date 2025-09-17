@@ -5,12 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting in love with the unfamiliar codebase</title>
-    <style type="text/css">html {
+    <style type="text/css">:root {
+--primary-color: #330099;
+--primary-color-light: #33009946;
+--secondary-color: #ffffff;
+}
+html {
 line-height: 1.5;
 font-family: system-ui, sans-serif;
 font-size: 20px;
-color: #330099;
-background: linear-gradient(180deg, #33009946 0%, #FFFFFF 19%);
+color: var(--primary-color);
+background: linear-gradient(
+180deg,
+var(--primary-color-light) 0%,
+var(--secondary-color) 19%
+);
 background-repeat: repeat-x;
 background-position: top;
 background-attachment: fixed;
@@ -60,7 +69,7 @@ margin: 1em 0;
 }
 a,
 a:visited {
-color: #1a1a1a;
+color: var(--primary-color-light);
 }
 img {
 max-width: 100%;
@@ -94,7 +103,7 @@ blockquote {
 margin: 1em 0 1em 1.7em;
 padding-left: 1em;
 border-left: 2px solid #e6e6e6;
-color: #606060;
+color: var(--primary-color-light);
 }
 code {
 font-family: Menlo, Monaco, "Lucida Console", Consolas, monospace;
@@ -186,7 +195,12 @@ vertical-align: middle;
 display: block;
 text-align: center;
 margin: 0.5rem auto;
-}</style>
+}
+footer {
+width: 100%;
+text-align: center;
+}
+</style>
 </head>
 
 <body>
