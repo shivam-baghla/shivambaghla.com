@@ -14,6 +14,6 @@ This site is Owned by **Shivam Baghla**, completely [open source](https://github
 
 Doubling down on the principles of [HTML-FIRST-DEVELOPMENT](https://html-first.com/)
 
-> I'm yet fix few thing here on landing page, but above mentioned read pages are good enough. :P
+> I'm yet fix few thing here on landing page, but above mentioned read pages are good enough.
 
 Last updated at: 17 Sept, 2025.
