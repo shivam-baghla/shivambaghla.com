@@ -31,7 +31,7 @@ jobs:
       - name: Install Pandoc
         uses: pandoc/actions/setup@main
         with:
-          version: 3.8
+          version: 2.19
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: List all files
