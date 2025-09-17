@@ -61,7 +61,7 @@ jobs:
               echo "  Using landing theme for: $i"
             fi
             
-            encoded_template=$(echo -n "$(cat $theme_file)" | base64)
+            encoded_template=$(base64 -w 0 < "$theme_file")
             pandoc --sandbox -s $i -o "$target_dir/$(basename $i .md).html" --template="data:text/html;base64,$encoded_template" --embed-resources --verbose
             rm $i
           done
