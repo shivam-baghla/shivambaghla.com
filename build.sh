@@ -69,5 +69,5 @@ for i in $(find . -type f -name "*.md" ! -path "./docs/*" ! -path "./.git/*"); d
 done
 
 echo "✅ Build complete! Files generated in docs/ directory"
-echo "🌐 To preview locally, you can serve the docs directory with:"
-echo "   cd docs && python3 -m http.server 8000"
+echo "🌐 Will now start local python http.server @ http://localhost:12345"
+python3 -m http.server 12345 -d docs
