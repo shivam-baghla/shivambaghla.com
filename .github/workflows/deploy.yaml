@@ -68,23 +68,37 @@ jobs:
 
       - name: List all files
         run: ls -al
-      - name: Commit generated folder
+      - name: Setup deployment branch and push files
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
 
-          git add docs
-          git commit -m "Generate and deploy folder" --no-verify
-      - name: Push changes
-        run: |
-          git push origin HEAD:master
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: "./docs"
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          # Create or checkout deployment branch
+          git fetch origin deployment || true
+          git checkout -B deployment
+          
+          # Clear deployment branch (keep only .git, ., and docs)
+          find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name 'docs' -exec rm -rf {} +
+          
+          # Copy generated files from docs to root of deployment branch
+          cp -r docs/* .
+          
+          # Remove docs folder since files are now in root
+          rm -rf docs
+          
+          # Add all files and commit
+          git add -A
+          git commit -m "Deploy generated site" --no-verify || echo "No changes to commit"
+          
+          # Force push to deployment branch
+          git push origin deployment --force
+      # - name: Setup Pages
+      #   uses: actions/configure-pages@v5
+      # - name: Upload artifact
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     path: "."
+      # - name: Deploy to GitHub Pages
+      #   id: deployment
+      #   uses: actions/deploy-pages@v4
       - run: echo "🍏 This job's status is ${{ job.status }}."
