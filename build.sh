@@ -14,10 +14,10 @@ fi
 echo "✅ Pandoc version:"
 pandoc -v | head -1
 
-# Clean and create docs directory
-echo "🧹 Cleaning docs directory..."
-rm -rf docs
-mkdir -p docs
+# Clean and create build directory
+echo "🧹 Cleaning build directory..."
+rm -rf build
+mkdir -p build
 
 # Check if theme files exist
 if [[ ! -f "theme/blog-theme.html" ]]; then
@@ -35,18 +35,18 @@ current_dir=$(pwd)
 
 # Copy static files (images, HTML, etc.)
 echo "📁 Copying static files..."
-for i in $(find . -type f \( -name "*.avif" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.html" \) ! -path "./docs/*" ! -path "./.git/*"); do
+for i in $(find . -type f \( -name "*.avif" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.html" \) ! -path "./build/*" ! -path "./.git/*"); do
     echo "Copying: $i"
-    target_dir="docs/$(dirname $i)"
+    target_dir="build/$(dirname $i)"
     mkdir -p "$target_dir"
     cp "$i" "$target_dir/"
 done
 
 # Convert markdown files
 echo "📝 Converting Markdown files..."
-for i in $(find . -type f -name "*.md" ! -path "./docs/*" ! -path "./.git/*"); do
+for i in $(find . -type f -name "*.md" ! -path "./build/*" ! -path "./.git/*"); do
     echo "Processing: $i"
-    target_dir="docs/$(dirname $i)"
+    target_dir="build/$(dirname $i)"
     mkdir -p "$target_dir"
     output_file="$target_dir/$(basename "$i" .md).html"
     
@@ -68,6 +68,6 @@ for i in $(find . -type f -name "*.md" ! -path "./docs/*" ! -path "./.git/*"); d
     pandoc -s "$i" -o "$output_file" --template="data:text/html;base64,$encoded_template" --embed-resources --verbose
 done
 
-echo "✅ Build complete! Files generated in docs/ directory"
+echo "✅ Build complete! Files generated in build/ directory"
 echo "🌐 Will now start local python http.server @ http://localhost:12345"
-python3 -m http.server 12345 -d docs
+python3 -m http.server 12345 -d build

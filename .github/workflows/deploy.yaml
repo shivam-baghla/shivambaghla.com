@@ -6,7 +6,7 @@ on:
     branches:
       - master
     paths-ignore:
-      - "docs/**"
+      - "build/**"
   workflow_dispatch:
 
 permissions:
@@ -39,25 +39,25 @@ jobs:
       - name: Build (Will convert all MDs to HTMLs and move additional files)
         run: |
           pandoc -v
-          rm -rf docs
-          mkdir -p docs
+          rm -rf build
+          mkdir -p build
           for i in $(find . -type f \( -name "*.avif" -o -name "*.png" -o -name "*.jpg" -o -name "*.jpeg" -o -name "*.gif" -o -name "*.html" \)) ; do
             echo "$i"
-            target_dir="docs/$(dirname $i)"
+            target_dir="build/$(dirname $i)"
             mkdir -p "$target_dir"
             mv $i "$target_dir/"
           done
           for i in $(find . -type f -name "*.md") ; do
             echo "Processing: $i"
-            target_dir="docs/$(dirname $i)"
+            target_dir="build/$(dirname $i)"
             mkdir -p "$target_dir"
             
             # Determine which theme to use based on file path
             if [[ $i == ./blog/* ]]; then
-              theme_file="docs/theme/blog-theme.html"
+              theme_file="build/theme/blog-theme.html"
               echo "  Using blog theme for: $i"
             else
-              theme_file="docs/theme/landing-theme.html"
+              theme_file="build/theme/landing-theme.html"
               echo "  Using landing theme for: $i"
             fi
             
@@ -77,14 +77,14 @@ jobs:
           git fetch origin deployment || true
           git checkout -B deployment
           
-          # Clear deployment branch (keep only .git, ., and docs)
-          find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name 'docs' -exec rm -rf {} +
+          # Clear deployment branch (keep only .git, ., and build)
+          find . -maxdepth 1 ! -name '.git' ! -name '.' ! -name 'build' -exec rm -rf {} +
           
-          # Copy generated files from docs to root of deployment branch
-          cp -r docs/* .
+          # Copy generated files from build to root of deployment branch
+          cp -r build/* .
           
-          # Remove docs folder since files are now in root
-          rm -rf docs
+          # Remove build folder since files are now in root
+          rm -rf build
           
           # Add all files and commit
           git add -A
